@@ -6,9 +6,11 @@
 package thatsappserver;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
+import java.io.OutputStreamWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.Arrays;
@@ -41,6 +43,7 @@ public class ThatsAppServer {
                 MyThread mt = new MyThread(clients.get(line));
                 mt.start();
                 System.out.println("put and started");
+                c=null;
             }
         }
             
@@ -63,6 +66,13 @@ public class ThatsAppServer {
             ex.printStackTrace();
         }
         return null;
+    }
+    
+    public static synchronized Socket getSocket(String number)
+    {
+            
+        return clients.get(number);
+         
     }
     
     

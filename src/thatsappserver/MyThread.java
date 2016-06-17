@@ -74,7 +74,7 @@ public class MyThread extends Thread implements Runnable {
                     Thread.sleep(1000);
                     byte[] bytes = new byte[16*1024];
                     
-                    OutputStream fileOut = new FileOutputStream("C:\\Users\\Alexander\\Desktop\\Projekt\\Files\\"+msg);
+                    OutputStream fileOut = new FileOutputStream("C:\\Users\\Perndorfer\\Desktop\\Projekt\\Files\\"+msg);
                    
                     int count;
                     bw.write(number+";"+flag+";"+msg+";"+date+"\r\n");
@@ -82,7 +82,7 @@ public class MyThread extends Thread implements Runnable {
                     
                     while ((count = in.read(bytes))>0)
                     {
-                        System.out.println("loop "+count);
+                       // System.out.println("loop "+count);
                         fileOut.write(bytes,0,count);
                     }
                     
@@ -90,15 +90,18 @@ public class MyThread extends Thread implements Runnable {
                     System.out.println("wrote");
                     fileOut.close();
                     
-                    File f = new File("C:\\Users\\Alexander\\Desktop\\Projekt\\Files\\"+msg);
+                    File f = new File("C:\\Users\\Perndorfer\\Desktop\\Projekt\\Files\\"+msg);
                     FileInputStream fileIn = new FileInputStream(f);
                     
                     while ((count = fileIn.read(bytes)) > 0) 
                     {
                         out.write(bytes, 0, count);
-                        System.out.println(count);
+                      //  System.out.println(count);
                     }
                     out.close();
+                    in.close();
+//                    ThatsAppServer.getSocket(number).close();
+//                    s.close();
                     fileIn.close();
                 }
             }
